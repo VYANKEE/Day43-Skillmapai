@@ -1,9 +1,11 @@
 // client/src/aiLogic.js
 
-const SERVER_URL = "http://localhost:5000/api/generate-roadmap";
+// ✅ YAHAN HAI TERA LIVE BACKEND URL (Render wala)
+// Note: End mein '/api/generate-roadmap' zaroor hona chahiye
+const SERVER_URL = "https://day43-skillmapai.onrender.com/api/generate-roadmap";
 
 export const generateRoadmap = async (role) => {
-  console.log("Asking Server for Roadmap:", role); // Debugging ke liye
+  console.log("🚀 Asking Live Server for Roadmap:", role);
 
   try {
     const response = await fetch(SERVER_URL, {
@@ -19,12 +21,13 @@ export const generateRoadmap = async (role) => {
     }
 
     const data = await response.json();
-    console.log("Real AI Data Received:", data); // Console mein check karna
+    console.log("✅ Real AI Data Received:", data);
     return data;
 
   } catch (error) {
-    console.error("Connection Failed:", error);
-    alert("Server se connect nahi ho pa raha! Kya 'node server.js' chal raha hai?");
-    return null; // Ab hum Mock Data return NAHI karenge, taaki pata chale error hai
+    console.error("❌ Connection Failed:", error);
+    // Render ka free server 50 seconds tak sota hai agar use na karo.
+    alert("Server jag raha hai... 30 second ruk kar dobara try karo! (Render Free Tier)");
+    return null;
   }
 };
